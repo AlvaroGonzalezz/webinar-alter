@@ -53,6 +53,13 @@ main.table {
     align-items: center;
 }
 
+.title-text {
+    color: black;
+    background-color: rgba(245, 245, 245, 0.771);
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 15px;
+}
 .table__header .input-group {
     width: 35%;
     height: 100%;

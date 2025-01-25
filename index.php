@@ -14,7 +14,7 @@
 <body>
     <main class="table" id="customers_table">
         <section class="table__header">
-            <h1>Registros - Webinar Alter Business</h1>
+            <h1 class="title-text">Registros - Webinar Alter Business</h1>
             <div class="input-group">
                 <input type="search" placeholder="Buscar...">
                 <img src="images/search.png" alt="">
