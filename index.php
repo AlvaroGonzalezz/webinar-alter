@@ -1,4 +1,12 @@
+<?php
+include("conexion.php");
+$sql = "SELECT * FROM QKf_wpforms_db";
+$request = mysqli_query($conexion, $sql);
 
+if (!$request) {
+    echo "Error en la consulta: " . mysqli_error($conexion);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +23,7 @@
     <main class="table" id="customers_table">
         <section class="table__header">
             <h1 class="title-text">Registros - Webinar Alter Business</h1>
+            <img src="images/icons.png" alt="Logo" class="logo-home">
             <div class="input-group">
                 <input type="search" placeholder="Buscar...">
                 <img src="images/search.png" alt="">
@@ -27,7 +36,6 @@
                     <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
                     <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
                     <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
                 </div>
             </div>
         </section>
@@ -40,18 +48,31 @@
                         <th> Apellido <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Correo electrónico <span class="icon-arrow">&UpArrow;</span></th>
                         <th> País <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Fecha de registro <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> 1 </td>
-                        <td> Zinzu Chan Lee</td>
-                        <td> Seoul </td>
-                        <td> 17 Dec, 2022 </td>
-                        <td> <strong> Mexico </strong></td>
-                    </tr>
-                    
-                    
+                    <?php
+
+                    if ($request) {
+                        // Recorre los resultados
+                        while ($fila = mysqli_fetch_assoc($request)) {
+                            $datos = unserialize($fila['form_value']); 
+                            echo "<tr>";
+                            echo "<td>" . $fila['form_id'] . "</td>";
+                            echo "<td>" . ($datos['Nombre'] ?? 'N/A') . "</td>"; 
+                            echo "<td>" . ($datos['Apellido'] ?? 'N/A') . "</td>"; 
+                            echo "<td>" . ($datos['Correo'] ?? 'N/A') . "</td>"; 
+                            echo "<td>" . ($datos['País'] ?? 'N/A') . "</td>"; 
+
+                            echo "<td>" . $fila['form_date'] . "</td>";
+                            echo "</tr>";
+                        }
+                    }
+
+                    ?>
+
+
                 </tbody>
             </table>
         </section>

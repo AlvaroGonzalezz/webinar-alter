@@ -1,13 +1,4 @@
-/**
-Responsive HTML Table With Pure CSS - Web Design/UI Design
 
-Code written by:
-👨🏻‍⚕️ @Coding Design (Jeet Saru)
-
-> You can do whatever you want with the code. However if you love my content, you can **SUBSCRIBED** my YouTube Channel.
-
-🌎link: www.youtube.com/codingdesign 
-*/
 
 const search = document.querySelector('.input-group input'),
     table_rows = document.querySelectorAll('tbody tr'),
@@ -130,12 +121,11 @@ json_btn.onclick = () => {
 const csv_btn = document.querySelector('#toCSV');
 
 const toCSV = function (table) {
-    // Code For SIMPLE TABLE
-    // const t_rows = table.querySelectorAll('tr');
-    // return [...t_rows].map(row => {
-    //     const cells = row.querySelectorAll('th, td');
-    //     return [...cells].map(cell => cell.textContent.trim()).join(',');
-    // }).join('\n');
+    const t_rows = table.querySelectorAll('tr');
+    return [...t_rows].map(row => {
+        const cells = row.querySelectorAll('th, td');
+        return [...cells].map(cell => cell.textContent.trim()).join(',');
+    }).join('\n');
 
     const t_heads = table.querySelectorAll('th'),
         tbody_rows = table.querySelectorAll('tbody tr');
@@ -167,11 +157,11 @@ const excel_btn = document.querySelector('#toEXCEL');
 
 const toExcel = function (table) {
     // Code For SIMPLE TABLE
-    // const t_rows = table.querySelectorAll('tr');
-    // return [...t_rows].map(row => {
-    //     const cells = row.querySelectorAll('th, td');
-    //     return [...cells].map(cell => cell.textContent.trim()).join('\t');
-    // }).join('\n');
+    const t_rows = table.querySelectorAll('tr');
+    return [...t_rows].map(row => {
+        const cells = row.querySelectorAll('th, td');
+        return [...cells].map(cell => cell.textContent.trim()).join('\t');
+    }).join('\n');
 
     const t_heads = table.querySelectorAll('th'),
         tbody_rows = table.querySelectorAll('tbody tr');

@@ -30,6 +30,9 @@ body {
     align-items: center;
 }
 
+.logo-home {
+    width: 5%;
+}
 main.table {
     width: 82vw;
     height: 90vh;
@@ -215,6 +218,15 @@ tbody tr.hide td img {
 @media (max-width: 1000px) {
     td:not(:first-of-type) {
         min-width: 12.1rem;
+    }
+}
+
+@media (max-width: 678px) {
+    .title-text {
+        font-size: 16px;
+    }
+    .logo-home {
+        display: none;
     }
 }
 
